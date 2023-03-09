@@ -5,10 +5,7 @@ const doctorPost = Joi.object({
   hospital: Joi.objectId().required(),
   department: Joi.objectId().required(),
   address: Joi.string().required(),
-  phone: Joi.string()
-    .length(10)
-    .pattern(/^[0-9]+$/)
-    .required(),
+  phone: Joi.number()
 });
 
 const doctorPut = Joi.object({
@@ -16,9 +13,7 @@ const doctorPut = Joi.object({
   hospital: Joi.objectId(),
   department: Joi.objectId(),
   address: Joi.string(),
-  phone: Joi.string()
-    .length(10)
-    .pattern(/^[0-9]+$/),
+  phone: Joi.number()
 });
 
 const department = Joi.object({

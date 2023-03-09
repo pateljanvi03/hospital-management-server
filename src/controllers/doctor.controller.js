@@ -2,7 +2,9 @@ const Doctor = require("../models/doctor.model");
 
 exports.list = async (req, res) => {
   try {
-    const doctors = await Doctor.find();
+    const doctors = await Doctor.find()
+      .populate("hospital", "name")
+      .populate("department", "name");
     res.status(200).json({ doctors });
   } catch (err) {
     res.status(400).json({ message: err?.message });
@@ -12,7 +14,6 @@ exports.list = async (req, res) => {
 exports.get = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({ _id: req.params.id });
-    console.log(doctor);
     res.status(200).json(doctor);
   } catch (err) {
     res.status(400).json({ message: err?.message });

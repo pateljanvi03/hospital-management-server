@@ -3,7 +3,7 @@ const Hospital = require("../models/hospital.model");
 exports.list = async (req, res) => {
   try {
     const hospitals = await Hospital.find();
-    res.status(200).json(hospitals);
+    res.status(200).json({ hospitals });
   } catch (err) {
     res.status(400).json({ message: err?.message });
   }
