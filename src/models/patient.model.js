@@ -14,7 +14,7 @@ const Patient = new Schema(
     height: {
       type: Number,
     },
-    weigth: {
+    weight: {
       type: Number,
     },
     address: {

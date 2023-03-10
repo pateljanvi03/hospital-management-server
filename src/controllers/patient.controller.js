@@ -3,7 +3,7 @@ const Patient = require("../models/patient.model");
 exports.list = async (req, res) => {
   try {
     const patients = await Patient.find();
-    res.status(200).json(patients);
+    res.status(200).json({ patients });
   } catch (err) {
     res.status(400).json({ message: err?.message });
   }

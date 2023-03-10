@@ -33,7 +33,7 @@ const patient = Joi.object({
   height: Joi.number(),
   weight: Joi.number(),
   address: Joi.string(),
-  phone: Joi.number().min(10).max(10),
+  phone: Joi.number()
 });
 
 const patientAppinmentPost = Joi.object({
