@@ -1,3 +1,3 @@
-const { doctorPost, doctorPut, department, hospital, patient, patientAppinmentPost } = require("./validationSchema");
+const { doctorPost, doctorPut, department, hospital, patient, patientAppinmentPost, user } = require("./validationSchema");
 
-module.exports = { doctorPost, doctorPut, department, hospital, patient, patientAppinmentPost };
+module.exports = { doctorPost, doctorPut, department, hospital, patient, patientAppinmentPost, user };

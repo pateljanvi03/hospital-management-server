@@ -1,5 +1,4 @@
 const Doctor = require("../models/doctor.model");
-
 exports.list = async (req, res) => {
   try {
     const doctors = await Doctor.find()
@@ -7,6 +6,7 @@ exports.list = async (req, res) => {
       .populate("department", "name");
     res.status(200).json({ doctors });
   } catch (err) {
+    console.log(err);
     res.status(400).json({ message: err?.message });
   }
 };

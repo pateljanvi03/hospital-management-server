@@ -42,6 +42,11 @@ const patientAppinmentPost = Joi.object({
   timming: Joi.objectId().required(),
 });
 
+const user = Joi.object({
+  name: Joi.string().required(),
+  userName: Joi.string().required(),
+  password: Joi.string().required()
+})
 // const patientAppinmentPut = Joi.object({});
 
 module.exports = {
@@ -51,5 +56,6 @@ module.exports = {
   hospital,
   patient,
   patientAppinmentPost,
+  user
 
 };
