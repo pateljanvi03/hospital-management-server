@@ -68,7 +68,6 @@ exports.login = async (req, res) => {
         },
         (err, token) => {
           if (err) throw err;
-          //Token.create({ token: token });
           res.status(200).json({
             token
           });

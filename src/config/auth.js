@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const { nextTick } = require("process");
 
 exports.authValidation = async (req, res, next) => {
   let user;
