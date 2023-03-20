@@ -52,14 +52,14 @@ exports.erase = async (req, res) => {
 
 exports.patients = async (req, res) => {
   try {
-    let endDate = dayjs().add(1, "day").toDate();
+    let endDate = dayjs().startOf("day").add(1, "day").toDate();
     let startDate;
     if(req.params.duration == 'daily') {
-      startDate = dayjs().subtract(2, 'day').toDate();
+      startDate = dayjs().startOf("day").toDate();
     } else if(req.params.duration == 'weekly') {
-      startDate = dayjs().subtract(1, 'week').toDate();
+      startDate = dayjs().startOf("day").subtract(1, 'week').toDate();
     } else {
-      startDate = dayjs().subtract(1, 'month').toDate();
+      startDate = dayjs().startOf("day").subtract(1, 'month').toDate();
     }
 
     const patients = await Patient.aggregate([
@@ -80,8 +80,7 @@ exports.patients = async (req, res) => {
         }
       }
     ]);
-    console.log(patients);
-    res.status(200).json(patients[0].count);
+    res.status(200).json(patients[0]?.count || 0);
   } catch(err) {
     res.status(400).json({ message: err?.message });
   }
@@ -89,7 +88,7 @@ exports.patients = async (req, res) => {
 
 exports.barChart = async (req, res) => {
   try {
-    let startDate = dayjs().startOf("day").subtract(7, req.params.duration);
+    let startDate = dayjs().startOf("day").subtract(6, req.params.duration);
     let endDate = dayjs().add(1, 'day').toDate();
     let barChartData = [];
     const data = await Patient.aggregate([
@@ -116,7 +115,6 @@ exports.barChart = async (req, res) => {
       }
 
     ]);
-    // some error in date counting
 
     for(let i = 0; i < 7; i++) {
       let index = data.findIndex((x) =>
